@@ -32,5 +32,5 @@ def filter(objects, *conditions): # Function for filtering objects based on thei
             satisfy.append(obj) # Add the object to the array containing all objects passed to function that satisfy the conditions
     return satisfy
 avocado = rdcsv.read_csv("avocado.csv")
-avocado = filter(avocado, ["index", "a==b", 27]) # This will filter objects to only objects with an index of 27.
-print(avocado)
+avocado = filter(avocado, ["index", "a==b", "52"]) # Example filtering. This will filter objects to only objects with an index of 27.
+print(avocado) # Show results of reading the file.

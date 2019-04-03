@@ -3,11 +3,11 @@
 # NO STEALSIES OR COMMERCIAL USE PERMITTED
 from turtle import *
 from random import randint
-x_max = 25 # The maximum x value to graph. The minimum x is set to the negative of this value.
-y_max = 25 # The maximum y value to graph. The minimum y is set to the negative of this value.
-height = 500 # The height of the area to graph. As with the x and y maximum values, the area will be graphed from y=-height to y=height.
-width = 500 # The width of the area to graph. As with the x and y maximum values, the area will be graphed from x=-width to x=width.
-precision = 1 # How many values to calculate and move to for each x value. Increased values will give decreased speed but smoother lines. In order to not increase time taken with no effectiveness, this value should be set to the quotient of the height and y_max variables.
+x_max = 10 # The maximum x value to graph. The minimum x is set to the negative of this value.
+y_max = 10 # The maximum y value to graph. The minimum y is set to the negative of this value.
+height = 300 # The height of the area to graph. As with the x and y maximum values, the area will be graphed from y=-height to y=height.
+width = 300 # The width of the area to graph. As with the x and y maximum values, the area will be graphed from x=-width to x=width.
+precision = 30 # How many values to calculate and move to for each x value. Increased values will give decreased speed but smoother lines. In order to not increase time taken with no effectiveness, this value should be set to the quotient of the height and y_max variables.
 grid_x = 1 # The interval between gridlines on the x-axis.
 grid_y = 1 # The interval between gridlines on the y-axis.
 ht() # Stop the pointer appearing on screen
@@ -15,15 +15,23 @@ speed(0) # Fastest turtle speed
 colormode(255) # Enable EpiC RAzeR CHRomA RgB for lines
 lines = [ # Lines are stored in this array. Each line is input as an array with each coefficient, highest to lowest power (e.g. y=3x-4 is [3, 4])
     [3, -4],
-    [1, 0, 0]
+    [-2, 2],
+    [2, -1],
+    [-2, 4],
+    [1, 0, 0],
+    [-1, 0, 0],
+    [1, 2, 0],
+    [1, 0, -5, 0],
+    [1, 0, -4, 1],
+    [-1, 0, -3, 0, 0, 2],
     ]
 scatter_lines = [
-    [
+"""    [
         [0,0],1,
     ],
     [
         [0,0],[0,1],[1,2],0
-    ],
+    ],"""
 ]
 for x in range(-x_max, x_max + grid_x, grid_x):
     pu()
@@ -55,14 +63,15 @@ def calc(line, x):
 for line in lines:
     pu()
     color(randint(0, 255),randint(0, 255),randint(0, 255))
-    for x in range(int(-x_max*precision), int(x_max*precision), 1):
-        y = calc(line, x)*height/y_max
-        goto(x*width/x_max, y)
-        pd()
-for line in scatter_lines:
+    for x in range(-x_max, x_max, 1):
+        for i in range(0, precision, 1):
+            y = calc(line, (x+(i/precision)))*height/y_max
+            goto((x+(i/precision))*width/x_max, y)
+            pd()
+"""for line in scatter_lines:
     pu()
     color(randint(0, 255),randint(0, 255),randint(0, 255))
-    if line[-1]:
+    if line[-1] and line:
         for i in range(0, len(line)-1, 1):
             x = line[i][0]
             y = line[i][1]
@@ -76,5 +85,5 @@ for line in scatter_lines:
             pu()
             goto(x*width/x_max,y*height/y_max)
             pd()
-            dot(5)
+            dot(5)"""
 exitonclick()

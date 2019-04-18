@@ -1,5 +1,4 @@
 # Graphing Software
-# Source Code (C) James Thomson-Hicks
 # NO STEALSIES OR COMMERCIAL USE PERMITTED
 from turtle import *
 from random import randint

@@ -13,7 +13,7 @@ def or_cond(*args):
 def and_cond(*args):
     for i in range(0, len(args), 1):
         if not args[i]:
-            return False # Return a boolean value of False if all of the conditions are not met (AND)
+            return False # Return a boolean value of False if any of the conditions are not met (AND)
     return True # Return a voolean value of False if any of the conditions are not met
 def filter(objects, *conditions): # Function for filtering objects based on their attributes.
     satisfy = [] # Array of objects that satisfy the conditions passed to the function.
@@ -32,5 +32,5 @@ def filter(objects, *conditions): # Function for filtering objects based on thei
             satisfy.append(obj) # Add the object to the array containing all objects passed to function that satisfy the conditions
     return satisfy
 avocado = rdcsv.read_csv("avocado.csv")
-avocado = filter(avocado, ["index", "a==b", "52"]) # Example filtering. This will filter objects to only objects with an index of 27.
+avocado = filter(avocado, ["index", "a==b", "27"]) # Example filtering. This will filter objects to only objects with an index of 27.
 print(avocado) # Show results of reading the file.

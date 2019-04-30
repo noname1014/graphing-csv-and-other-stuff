@@ -5,13 +5,13 @@ screen_x_max = 200
 screen_y_min = -100
 screen_y_max = 100
 fov_degrees = 180
-"""
+#"""
 from turtle import *
 ht()
 pu()
 speed(0)
 colormode(255)
-"""
+#"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
 sig_digits = 4
@@ -153,16 +153,16 @@ def loop():
         for px in thing:
             color = px.__find_next_object__(px.x_rad + camera.x_rad, px.y_rad + camera.y_rad, camera.x, camera.y, camera.z)
             if color:
-                #"""
-                canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
-                #"""
                 """
+                canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
+                """
+                #"""
                 pu()
                 goto(px.x, px.y)
                 pd()
                 pencolor(0, 0, color)
                 dot(1.5)
-                """
+                #"""
 init()
 # Finding angle from each point to camera
 def reverse(obj):

@@ -15,7 +15,7 @@ colormode(255)
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
 sig_digits = 4
-render_distance_max = 96
+render_distance_max = 128
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -124,7 +124,7 @@ class Pixel:
             for object in rectobjects:
                 x = self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[0]
                 y = self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[1]
-                if object.__check_point_in_self__(x, y, z):
+                if object.__check_point_in_self__(self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[0], self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[1], z):
                     return z
         return False
 
@@ -153,16 +153,16 @@ def loop():
         for px in thing:
             color = px.__find_next_object__(px.x_rad + camera.x_rad, px.y_rad + camera.y_rad, camera.x, camera.y, camera.z)
             if color:
-                """
-                canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
-                """
                 #"""
+                canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
+                #"""
+                """
                 pu()
                 goto(px.x, px.y)
                 pd()
-                pencolor(0, 0, color)
+                pencolor(0, 0, int(color))
                 dot(1.5)
-                #"""
+                """
 init()
 # Finding angle from each point to camera
 def reverse(obj):

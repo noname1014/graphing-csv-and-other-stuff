@@ -14,7 +14,7 @@ colormode(255)
 #"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
-sig_digits = 4
+sig_digits = 2
 render_distance_max = 128
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)

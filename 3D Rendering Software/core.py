@@ -172,7 +172,7 @@ def reverse(obj):
             for z in range(obj.z1, obj.z2, 1):
                 x_rad = atan2(z, x)
                 y_rad = atan2(z, y)
-                angles.append({"x":x_rad, "y":y_rad})
+                angles.append({"x":round(x_rad,sig_digits), "y":round(y_rad,sig_digits)})
     return angles
 for rectobject in rectobjects:
     print(rectobject.str)
@@ -180,4 +180,13 @@ for rectobject in rectobjects:
     for angle in angles:
         x_angle = angle["x"]
         y_angle = angle["y"]
-loop()
+for thing in pixels:
+    for px in thing:
+        if {"x":round(px.x_rad, sig_digits),"y":round(px.y_rad,sig_digits)} in angles:
+            canvas.create_rectangle((px.x, px.y)*2, fill="black")
+            pu()
+            goto(px.x, px.y)
+            pd()
+            pencolor(0, 0, 0)
+            dot(1.5)
+#loop()

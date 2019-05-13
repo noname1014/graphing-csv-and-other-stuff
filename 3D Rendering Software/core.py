@@ -1,9 +1,9 @@
 from math import sin, cos, tan, degrees, radians, pi, atan2
 from tkinter import *
-screen_x_min = -100
+screen_x_min = 0
 screen_x_max = 200
-screen_y_min = -100
-screen_y_max = 100
+screen_y_min = 0
+screen_y_max = 400
 fov_degrees = 180
 #"""
 from turtle import *
@@ -189,4 +189,6 @@ for thing in pixels:
             pd()
             pencolor(0, 0, 0)
             dot(1.5)
+            print(px.x + " " + px.y)
 #loop()
+root.mainloop()

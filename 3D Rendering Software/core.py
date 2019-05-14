@@ -14,7 +14,7 @@ colormode(255)
 #"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
-sig_digits = 2
+sig_digits = 1
 render_distance_max = 128
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)
@@ -106,8 +106,12 @@ class Pixel:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.x_rad = (x-screen_width)*(1/screen_width)*((2*pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
-        self.y_rad = (y-screen_height)*(1/screen_height)*((2*pi)/(360/fov_degrees))
+        self.x_rad = (x-(screen_width/2))*(1/screen_width)*((2*pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
+        self.y_rad = (y-(screen_height/2))*(1/screen_height)*((2*pi)/(360/fov_degrees))
+        while self.x_rad >= 2*pi:
+            self.x_rad -= 2*pi
+        while self.y_rad >= 2*pi:
+            self.x_rad -= 2*pi
         self.color = [0,0,0]
     def __trace__(self, x_ang, y_ang, x1, y1, z1):
         for z in range(0, render_distance_max, 1):
@@ -182,6 +186,8 @@ for rectobject in rectobjects:
         y_angle = angle["y"]
 for thing in pixels:
     for px in thing:
+        print(px.x_rad)
+        print(px.y_rad)
         if {"x":round(px.x_rad, sig_digits),"y":round(px.y_rad,sig_digits)} in angles:
             canvas.create_rectangle((px.x, px.y)*2, fill="black")
             pu()

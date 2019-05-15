@@ -3,8 +3,8 @@ from tkinter import *
 screen_x_min = 0
 screen_x_max = 200
 screen_y_min = 0
-screen_y_max = 400
-fov_degrees = 180
+screen_y_max = 100
+fov_degrees = 90
 #"""
 from turtle import *
 ht()
@@ -22,7 +22,7 @@ canvas.pack()
 rectobjects = []
 class Camera:
     def __init__(self, x, y, z):
-        self.x_rad = float(0.1)
+        self.x_rad = float(0)
         self.y_rad = float(0)
         self.x = x
         self.y = y
@@ -108,10 +108,6 @@ class Pixel:
         self.y = y
         self.x_rad = (x-(screen_width/2))*(1/screen_width)*((2*pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
         self.y_rad = (y-(screen_height/2))*(1/screen_height)*((2*pi)/(360/fov_degrees))
-        while self.x_rad >= 2*pi:
-            self.x_rad -= 2*pi
-        while self.y_rad >= 2*pi:
-            self.x_rad -= 2*pi
         self.color = [0,0,0]
     def __trace__(self, x_ang, y_ang, x1, y1, z1):
         for z in range(0, render_distance_max, 1):
@@ -160,13 +156,13 @@ def loop():
                 #"""
                 canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
                 #"""
-                """
+                #"""
                 pu()
                 goto(px.x, px.y)
                 pd()
                 pencolor(0, 0, int(color))
                 dot(1.5)
-                """
+                #"""
 init()
 # Finding angle from each point to camera
 def reverse(obj):

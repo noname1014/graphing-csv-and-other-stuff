@@ -141,9 +141,9 @@ def init():
     global camera
     camera = Camera(0, 0, 0)
     pixels = []
-    for i in range(0, screen_height + 1, 1):
+    for i in range(0, screen_width + 1, 1):
         pixels.append([])
-        for y in range(0, screen_width + 1, 1):
+        for y in range(0, screen_height + 1, 1):
             pixels[i].append(Pixel(int(i + screen_x_min), int(y + screen_y_min)))
     file_in = open('rectobjects.txt')
     for line in file_in:

@@ -107,8 +107,8 @@ class Pixel:
         self.x = x
         self.y = y
         #"""
-        self.x_rad = (x)*(1/screen_width)*((pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
-        self.y_rad = (y)*(1/screen_height)*((pi)/(360/fov_degrees))
+        self.x_rad = (x)*(1/screen_width)*((2*pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
+        self.y_rad = (y)*(1/screen_height)*((2*pi)/(360/fov_degrees))
         #"""
         """
         self.x_rad =

@@ -1,8 +1,8 @@
 from math import sin, cos, tan, degrees, radians, pi, atan2
 from tkinter import *
-screen_x_min = 0
+screen_x_min = -200
 screen_x_max = 200
-screen_y_min = 0
+screen_y_min = -100
 screen_y_max = 100
 fov_degrees = 90
 #"""
@@ -14,7 +14,7 @@ colormode(255)
 #"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
-sig_digits = 1
+sig_digits = 3
 render_distance_max = 128
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)
@@ -106,8 +106,13 @@ class Pixel:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.x_rad = (x-(screen_width/2))*(1/screen_width)*((2*pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
-        self.y_rad = (y-(screen_height/2))*(1/screen_height)*((2*pi)/(360/fov_degrees))
+        #"""
+        self.x_rad = (x)*(1/screen_width)*((pi)/(360/fov_degrees)) # Set x and y angles, in radians, of the pixel relative to the point on the screen
+        self.y_rad = (y)*(1/screen_height)*((pi)/(360/fov_degrees))
+        #"""
+        """
+        self.x_rad =
+        """
         self.color = [0,0,0]
     def __trace__(self, x_ang, y_ang, x1, y1, z1):
         for z in range(0, render_distance_max, 1):
@@ -139,7 +144,7 @@ def init():
     for i in range(0, screen_height + 1, 1):
         pixels.append([])
         for y in range(0, screen_width + 1, 1):
-            pixels[i].append(Pixel(int(i), int(y)))
+            pixels[i].append(Pixel(int(i + screen_x_min), int(y + screen_y_min)))
     file_in = open('rectobjects.txt')
     for line in file_in:
         line = line.split()

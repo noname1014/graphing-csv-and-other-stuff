@@ -4,7 +4,7 @@ screen_x_min = -200
 screen_x_max = 200
 screen_y_min = -100
 screen_y_max = 100
-fov_degrees = 90
+fov_degrees = 180
 #"""
 from turtle import *
 ht()

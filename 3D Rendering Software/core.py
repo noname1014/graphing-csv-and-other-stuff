@@ -187,8 +187,6 @@ for rectobject in rectobjects:
         y_angle = angle["y"]
 for thing in pixels:
     for px in thing:
-        print(px.x_rad)
-        print(px.y_rad)
         if {"x":round(px.x_rad, sig_digits),"y":round(px.y_rad,sig_digits)} in angles:
             canvas.create_rectangle((px.x, px.y)*2, fill="black")
             pu()

@@ -15,7 +15,7 @@ colormode(255)
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
 sig_digits = 2
-render_distance_max = 256
+render_distance_max = 512
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -212,7 +212,7 @@ for thing in pixels:
             pencolor(0, 0, 0)
             dot(1.5)
             """
-            
+
 #loop()
 print("Done!")
 root.mainloop()

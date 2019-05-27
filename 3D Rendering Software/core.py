@@ -2,8 +2,8 @@ from math import sin, cos, tan, degrees, radians, pi, atan2
 from tkinter import *
 screen_x_min = -200
 screen_x_max = 200
-screen_y_min = -100
-screen_y_max = 100
+screen_y_min = -200
+screen_y_max = 200
 fov_degrees = 180
 #"""
 from turtle import *
@@ -14,8 +14,8 @@ colormode(255)
 #"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
-sig_digits = 3
-render_distance_max = 128
+sig_digits = 2
+render_distance_max = 256
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)
 canvas.pack()
@@ -161,22 +161,38 @@ def loop():
                 #"""
                 canvas.create_rectangle((px.x, px.y)*2 , fill=("black"))
                 #"""
-                #"""
+                """
                 pu()
                 goto(px.x, px.y)
                 pd()
                 pencolor(0, 0, int(color))
                 dot(1.5)
-                #"""
+                """
 init()
 # Finding angle from each point to camera
 def reverse(obj):
     angles = []
-    for x in range(obj.x1, obj.x2, 1):
-        for y in range(obj.y1, obj.y2, 1):
-            for z in range(obj.z1, obj.z2, 1):
-                x_rad = atan2(z, x)
-                y_rad = atan2(z, y)
+    for x in range(0, abs(obj.x2-obj.x1), 1):
+        for y in range(0, abs(obj.y2-obj.y1), 1):
+            for z in range(0, abs(obj.z2-obj.z1), 1):
+                if obj.z1 >= obj.z2:
+                    if obj.x1 >= obj.x2:
+                        x_rad = atan2(obj.z2 + z, obj.x2 + x)
+                    else:
+                        x_rad = atan2(obj.z2 + z, obj.x1 + x)
+                    if obj.y1 >= obj.y2:
+                        y_rad = atan2(obj.z2 + z, obj.y2 + y)
+                    else:
+                        y_rad = atan2(obj.z2 + z, obj.y1 + y)
+                else:
+                    if obj.x1 >= obj.x2:
+                        x_rad = atan2(obj.z1 + z, obj.x2 + x)
+                    else:
+                        x_rad = atan2(obj.z1 + z, obj.x1 + x)
+                    if obj.y1 >= obj.y2:
+                        y_rad = atan2(obj.z1 + z, obj.y2 + y)
+                    else:
+                        y_rad = atan2(obj.z1 + z, obj.y1 + y)
                 angles.append({"x":round(x_rad,sig_digits), "y":round(y_rad,sig_digits)})
     return angles
 for rectobject in rectobjects:
@@ -189,11 +205,14 @@ for thing in pixels:
     for px in thing:
         if {"x":round(px.x_rad, sig_digits),"y":round(px.y_rad,sig_digits)} in angles:
             canvas.create_rectangle((px.x, px.y)*2, fill="black")
+            """
             pu()
             goto(px.x, px.y)
             pd()
             pencolor(0, 0, 0)
             dot(1.5)
-            print(px.x + " " + px.y)
+            """
+            
 #loop()
+print("Done!")
 root.mainloop()

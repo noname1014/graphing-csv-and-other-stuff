@@ -37,7 +37,7 @@ class RectObject:
         self.z2 = z2
         self.color = [0,0,0]
         rectobjects.append(self)
-        self.str =str("RectObject object between points (" + str(self.x1)+ "," + str(self.y1)+ "," + str(self.z1) + "), (" + str(self.x2)+ "," + str(self.y2) + "," + str(self.z2) + ")")
+        self.str = str("RectObject object between points (" + str(self.x1)+ "," + str(self.y1)+ "," + str(self.z1) + "), (" + str(self.x2)+ "," + str(self.y2) + "," + str(self.z2) + ")")
     def str(self):
         return self.str
     def __check_point_in_self__(self, x, y, z): # Checking if the points are in range. Have fun with the print blocks I added in.
@@ -93,10 +93,7 @@ class RectObject:
         else:
             return False
         """
-        if x >= self.x1 and x <= self.x2 and y >= self.y1 and y <= self.y2 and z >= self.z1 and z <= self.z2:
-            return True
-        else:
-            return False
+        return x >= self.x1 and x <= self.x2 and y >= self.y1 and y <= self.y2 and z >= self.z1 and z <= self.z2
 def mouse(event):
     x = event.x
     y = event.y

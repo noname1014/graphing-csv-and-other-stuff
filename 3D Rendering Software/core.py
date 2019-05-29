@@ -1,7 +1,7 @@
 from math import sin, cos, tan, degrees, radians, pi, atan2
 from tkinter import *
-screen_x_min = -200
-screen_x_max = 200
+screen_x_min = -400
+screen_x_max = 400
 screen_y_min = -200
 screen_y_max = 200
 fov_degrees = 180
@@ -14,7 +14,7 @@ colormode(255)
 """
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
-sig_digits = 2
+sig_digits = 3
 render_distance_max = 512
 root = Tk()
 canvas = Canvas(root, width=screen_width, height=screen_height)

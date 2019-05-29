@@ -5,13 +5,13 @@ screen_x_max = 200
 screen_y_min = -200
 screen_y_max = 200
 fov_degrees = 180
-#"""
+"""
 from turtle import *
 ht()
 pu()
 speed(0)
 colormode(255)
-#"""
+"""
 screen_width = screen_x_max-screen_x_min
 screen_height = screen_y_max-screen_y_min
 sig_digits = 2
@@ -129,10 +129,7 @@ class Pixel:
                 if object.__check_point_in_self__(self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[0], self.__get_coords__(x_ang, y_ang, x1, y1, z1, z)[1], z):
                     return z
         return False
-
-
 #root.mainloop()
-
 def init():
     global pixels
     global camera
@@ -209,7 +206,6 @@ for thing in pixels:
             pencolor(0, 0, 0)
             dot(1.5)
             """
-
 #loop()
 print("Done!")
 root.mainloop()
